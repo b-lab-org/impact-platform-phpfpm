@@ -51,9 +51,6 @@ RUN git clone https://github.com/phadej/igbinary.git && \
 
 ADD php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
-RUN mkdir -p /data
-VOLUME ["/data"]
-
 EXPOSE 9000
 
 ENTRYPOINT ["/usr/sbin/php5-fpm", "-F"]
