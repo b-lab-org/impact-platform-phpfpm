@@ -49,6 +49,7 @@ RUN git clone https://github.com/phadej/igbinary.git && \
     echo "igbinary.compact_strings=Off" >> /etc/php5/mods-available/igbinary.ini && \
     php5enmod igbinary
 
+RUN usermod -u 1000 www-data
 ADD php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
 EXPOSE 9000
