@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:15.04
 MAINTAINER "The Impact Bot" <technology@bcorporation.net>
 
 RUN apt-get update -y && \
