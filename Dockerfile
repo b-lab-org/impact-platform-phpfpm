@@ -22,9 +22,6 @@ RUN pecl install \
     memcached-2.2.0 \
     && docker-php-ext-enable xdebug memcached
 
-# TODO postgresql client - if replacing artisan/codeception
-# TODO igbinary?
-
 ADD php.ini $PHP_INI_DIR/conf.d/impact.ini
 
 EXPOSE 9000
