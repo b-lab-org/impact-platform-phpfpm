@@ -23,7 +23,6 @@ RUN pecl install \
     && docker-php-ext-enable xdebug memcached
 
 ADD php.ini $PHP_INI_DIR/conf.d/impact.ini
-RUN usermod -u 1000 www-data
 
 EXPOSE 9000
 CMD ["php-fpm"]
