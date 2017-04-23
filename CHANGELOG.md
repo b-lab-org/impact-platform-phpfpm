@@ -1,3 +1,6 @@
+## 0.0.3
+* Use the official `php-fpm` alpine base image.
+
 ## 0.0.2
 * Turn off `clear_env` so environment variables can be configured by Docker.
 
