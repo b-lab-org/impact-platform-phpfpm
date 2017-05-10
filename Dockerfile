@@ -11,22 +11,33 @@ RUN set -xe; \
     g++ \
     make \
     cyrus-sasl-dev \
-    shadow
+    shadow && \
 
-RUN docker-php-ext-install \
+    # php extensions
+    docker-php-ext-install \
     json \
     mcrypt \
     pdo \
     pdo_pgsql \
-    zip
-
-RUN pecl install \
+    zip && \
+    pecl install \
     xdebug \
-    memcached-2.2.0 \
-    && docker-php-ext-enable xdebug memcached
+    memcached-2.2.0 && \
+    docker-php-ext-enable xdebug memcached && \
+
+    # permissions
+    usermod -u 1000 www-data && \
+
+    # cleanup
+    apk del \
+    autoconf \
+    g++ \
+    make \
+    cyrus-sasl-dev \
+    shadow && \
+    rm -rf /var/cache/apk/*
 
 ADD php.ini $PHP_INI_DIR/conf.d/impact.ini
-RUN usermod -u 1000 www-data
 
 EXPOSE 9000
 CMD ["php-fpm"]
