@@ -17,7 +17,8 @@ RUN docker-php-ext-install \
     json \
     mcrypt \
     pdo \
-    pdo_pgsql
+    pdo_pgsql \
+    zip
 
 RUN pecl install \
     xdebug \
