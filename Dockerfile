@@ -22,8 +22,9 @@ RUN set -xe; \
     zip && \
     pecl install \
     xdebug \
+    opcache \
     memcached-2.2.0 && \
-    docker-php-ext-enable xdebug memcached && \
+    docker-php-ext-enable xdebug memcached opcache && \
 
     # permissions
     usermod -u 1000 www-data && \
@@ -35,7 +36,8 @@ RUN set -xe; \
     make \
     cyrus-sasl-dev \
     shadow && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    docker-php-source delete
 
 ADD php.ini $PHP_INI_DIR/conf.d/impact.ini
 
