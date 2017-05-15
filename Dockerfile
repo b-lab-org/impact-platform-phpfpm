@@ -19,10 +19,11 @@ RUN set -xe; \
     mcrypt \
     pdo \
     pdo_pgsql \
+    opcache \
     zip && \
+
     pecl install \
     xdebug \
-    opcache \
     memcached-2.2.0 && \
     docker-php-ext-enable xdebug memcached opcache && \
 
