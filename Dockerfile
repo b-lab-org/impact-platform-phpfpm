@@ -1,6 +1,8 @@
 FROM php:5.6-fpm-alpine
 MAINTAINER "The Impact Bot" <technology@bcorporation.net>
 
+ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
+
 RUN set -xe; \
     echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
     apk add --no-cache \
@@ -26,6 +28,18 @@ RUN set -xe; \
     xdebug \
     memcached-2.2.0 && \
     docker-php-ext-enable xdebug memcached opcache && \
+
+    # phantomjs prebuilt binary
+    curl -Lk -o $PHANTOMJS_ARCHIVE https://github.com/fgrehm/docker-phantomjs2/releases/download/v2.0.0-20150722/dockerized-phantomjs.tar.gz && \
+    tar -xf $PHANTOMJS_ARCHIVE -C /tmp/ && \
+    cp -R /tmp/etc/fonts /etc/ && \
+    cp -R /tmp/lib/* /lib/ && \
+    cp -R /tmp/lib64 / && \
+    cp -R /tmp/usr/lib/* /usr/lib/ && \
+    cp -R /tmp/usr/lib/x86_64-linux-gnu /usr/ && \
+    cp -R /tmp/usr/share/* /usr/share/ && \
+    cp /tmp/usr/local/bin/phantomjs /usr/bin/ && \
+    rm -fr $PHANTOMJS_ARCHIVE  /tmp/* && \
 
     # permissions
     usermod -u 1000 www-data && \
