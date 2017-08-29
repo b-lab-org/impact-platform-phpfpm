@@ -1,3 +1,6 @@
+## 0.0.4
+* Adds alpine specific version of phantomjs.
+
 ## 0.0.3
 * Use the official `php-fpm` alpine base image.
 
