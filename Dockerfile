@@ -40,8 +40,6 @@ RUN set -xe; \
     cp -R /tmp/usr/share/* /usr/share/ && \
     cp /tmp/usr/local/bin/phantomjs /usr/bin/ && \
     rm -fr $PHANTOMJS_ARCHIVE  /tmp/* && \
-    mkdir /tmp && \
-    chmod 777 /tmp && \
 
     # blackfire for profiling
     version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
@@ -60,7 +58,7 @@ RUN set -xe; \
     make \
     cyrus-sasl-dev \
     shadow && \
-    rm -rf /var/cache/apk/* && \
+    rm -rf /var/cache/apk/* /tmp && \
     docker-php-source delete
 
 ADD php.ini $PHP_INI_DIR/conf.d/impact.ini
