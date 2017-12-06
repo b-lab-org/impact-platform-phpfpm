@@ -21,7 +21,13 @@ RUN set -xe; \
     mcrypt \
     pdo \
     pdo_pgsql \
+    opcache \
     zip && \
+
+    pecl install \
+    xdebug \
+    memcached-2.2.0 && \
+    docker-php-ext-enable xdebug memcached opcache && \
 
     # phantomjs prebuilt binary
     curl -Lk -o $PHANTOMJS_ARCHIVE https://github.com/fgrehm/docker-phantomjs2/releases/download/v2.0.0-20150722/dockerized-phantomjs.tar.gz && \
