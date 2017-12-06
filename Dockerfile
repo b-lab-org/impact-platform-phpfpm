@@ -40,6 +40,8 @@ RUN set -xe; \
     cp -R /tmp/usr/share/* /usr/share/ && \
     cp /tmp/usr/local/bin/phantomjs /usr/bin/ && \
     rm -fr $PHANTOMJS_ARCHIVE  /tmp/* && \
+    mkdir /tmp && \
+    chmod 777 /tmp && \
 
     # blackfire for profiling
     version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
