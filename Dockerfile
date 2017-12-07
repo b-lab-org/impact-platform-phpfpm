@@ -4,7 +4,7 @@ MAINTAINER "The Impact Bot" <technology@bcorporation.net>
 ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
 
 RUN set -xe; \
-    echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
+    echo http://dl-4.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
     apk add --no-cache \
     libmemcached-dev \
     libmcrypt-dev \
