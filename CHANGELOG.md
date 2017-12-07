@@ -1,3 +1,6 @@
+## 0.0.5
+* Enables blackfire extension for profiling.
+
 ## 0.0.4
 * Adds alpine specific version of phantomjs.
 
